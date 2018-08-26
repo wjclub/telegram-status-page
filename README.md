@@ -24,6 +24,7 @@ Each subject's check look like this:
       title: string,
       ok: boolean,
       response_time: double,
+      error: string,
       date: unix-ms-timestamp
     },
     ...

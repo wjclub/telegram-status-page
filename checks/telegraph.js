@@ -1,11 +1,11 @@
 const pingUtil = require('../pingUtil.js');
-const axios = require('axios')
+const axios = require('axios');
 
-const baseUrl = 'https://telegra.ph'
-const apiUrl = 'https://api.telegra.ph/'
+const baseUrl = 'https://telegra.ph';
+const apiUrl = 'https://api.telegra.ph/';
+const timeout = 5;
 
 exports.ping = async () => {
-  const timeout = 5;
   try {
     const pingResponse = await pingUtil.tcpPing({
       adress: baseUrl,
@@ -32,17 +32,23 @@ const tests = [
 
   // API: fetch page
   async () => {
+    
     let result = {
       title: 'API - fetch an article\'s content',
       ok: false,
-      response_time: Date.now(),
-      error: ''
+      response_time: 0,
+      error: '',
+      date: Date.now()
     }
 
     let response = null;
     try {
       // Use sample page from api docs
-      response = await axios.get(apiUrl +'getPage/Sample-Page-12-15?return_content=true');
+      const startTime = process.hrtime()
+        response = await axios.get(apiUrl +'getPage/Sample-Page-12-15?return_content=true', {
+          timeout: timeout * 1000
+        });
+      result.response_time = process.hrtime(startTime)[1] / 1000000;
     } catch (axiosError) {
       result.error = "Unable to GET answer from API"
       return result;
@@ -54,7 +60,7 @@ const tests = [
 
     let data = null;
     try {
-      data = JSON.parse(response.data);
+      data = response.data;
     } catch (jsonParsingError){
       result.error = "Unable to JSON-parse GET response"
       return result;
@@ -66,7 +72,6 @@ const tests = [
     }
     
     result.ok = true;
-    result.response_time = Date.now() - result.response_time;
     return result;
   },
 
@@ -77,5 +82,5 @@ const tests = [
 ]
 
 exports.test = async () => {
-  return [tests[0]];
+  return [await tests[0]()];
 }
