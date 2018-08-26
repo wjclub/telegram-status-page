@@ -73,12 +73,7 @@ const tests = [
     
     result.ok = true;
     return result;
-  },
-
-  // API: upload photo
-
-
-  // API: retrieve photo
+  }
 ]
 
 exports.test = async () => {
