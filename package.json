@@ -1,0 +1,28 @@
+{
+  "name": "telegram_status_page",
+  "version": "1.0.0",
+  "description": " Is Telegram down again? Check (nearly) every part of the Telegram Ecosystem for functionality. ",
+  "main": "main.js",
+  "dependencies": {
+    "tcp-ping": "^0.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wjclub/telegram-status-page.git"
+  },
+  "keywords": [
+    "telegram",
+    "status",
+    "ping"
+  ],
+  "author": "wjclub",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/wjclub/telegram-status-page/issues"
+  },
+  "homepage": "https://github.com/wjclub/telegram-status-page#readme"
+}
