@@ -1,13 +1,31 @@
 const pingUtil = require('../pingUtil.js');
-//const axios = require('axios');
 
-const domain = 'telesco.pe';
 const timeout = 5 * 1000;
 
-exports.ping = async () => {
+
+const dcs = [
+  {
+    ipv4: '149.154.167.50',
+    ipv6: '2001:b28:f23d:f001::a',
+    location: ''
+  },
+  {
+    ipv4: '149.154.167.51',
+    ipv6: '2001:067c:04e8:f002::a',
+    location: 'Amsterdam, NL'
+  },
+  {
+    ipv4: '149.154.175.100',
+    ipv6: '2001:b28:f23d:f003::a',
+    location: 'Miami, US (Level3 Colocation?)'
+  }
+]
+
+
+exports.ping = async (ipv4) => {
   try {
     const pingResponse = await pingUtil.tcpPing({
-      address: domain,
+      address: ipv4,
       port: 443,
       timeout: timeout
     });
@@ -27,12 +45,4 @@ exports.ping = async () => {
       date: Date.now()
     };
   }
-}
-
-const tests = [
-
-]
-
-exports.test = async () => {
-  return [];
 }

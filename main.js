@@ -21,7 +21,7 @@ for (let i in checks) {
 
 // Loop all pings
 async function doPings() {
-  const minDelay = 10 * 1000;
+  const minDelay = 15 * 1000;
   while (true) {
 
     const start = Date.now();
@@ -62,6 +62,7 @@ async function doChecks() {
 
     // TODO: remove DEBUG info
     console.debug(status.telegraph);
+    console.debug(status.telescope);
 
     await sleep(end > minDelay ? 0 : minDelay - end);
 

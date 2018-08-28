@@ -3,21 +3,20 @@ const axios = require('axios');
 
 const domain = 'telegra.ph';
 const apiUrl = 'https://api.telegra.ph/';
-const timeout = 5;
+const timeout = 5*1000;
 
 exports.ping = async () => {
   try {
     const pingResponse = await pingUtil.tcpPing({
       address: domain,
-      port: 80,
+      port: 443,
       timeout: timeout
     });
-
-    console.debug(pingResponse);
 
     return {
       ok: true,
       ping: pingResponse.avg,
+      ipv4: pingResponse.ipv4,
       date: Date.now()
     };
 
@@ -25,6 +24,7 @@ exports.ping = async () => {
     return {
       ok: false,
       ping: timeout,
+      ipv4: pingResponse.ipv4,
       date: Date.now()
     };
   }
