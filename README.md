@@ -15,6 +15,13 @@ Checks the health of the following telegram services:
 - Work in progress, but basic functionality is implemented.
 - A test version can be found here: https://telegramstatuspage-ksnyahwwsr.now.sh
 
+ToDo:
+- [ ] Fancy Web GUI
+- [ ] Downtime History
+- [ ] RSS Feed for downtimes
+- [ ] HTTP-Webhook Notifications
+- [ ] Functionality tests for all telegram services
+
 ## API
 - `/api/v1/all` - returns whole status
 - `/api/v1/dcs` - returns all DC's status
