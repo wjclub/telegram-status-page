@@ -6,9 +6,18 @@ const resolve4 = util.promisify(dns.resolve4);
 
 
 
-// Promisify tcp-ping
-exports.tcpPing = async function({address, port, timeout}) {
-  const ipa = (await resolve4(address))[0];
+/**
+ * Ping a TCP port on a host by it's dns name, ipv4 or ipv6 address
+ * @param {object} options
+ * @param {string} options.address The host's DNS entry
+ * @param {string} options.ipv4 The host's ipv4 address
+ * @param {string} options.ipv6 The host's ipv6 address
+ * @param {number} options.port The TCP port to ping
+ * @param {number} options.timeout Ping timeout in ms
+ * @returns Info about the ping
+ */
+exports.tcpPing = async function({address, ipv4, ipv6, port, timeout}) {
+  const ipa = ipv4 || ipv6 || (await resolve4(address))[0];
 
   try {
     const pingResponse = await tcpPing({
