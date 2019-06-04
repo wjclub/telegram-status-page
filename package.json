@@ -5,7 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "axios": "^0.18.1",
-    "express": "^4.17.0",
+    "express": "^4.17.1",
     "sleep-promise": "^8.0.1",
     "tcp-ping": "^0.1.1"
   },
