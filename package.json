@@ -4,7 +4,7 @@
   "description": " Is Telegram down again? Check (nearly) every part of the Telegram Ecosystem for functionality. ",
   "main": "main.js",
   "dependencies": {
-    "axios": "^0.19.1",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "sleep-promise": "^8.0.1",
     "tcp-ping": "^0.1.1"
